@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Random Password</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+            <h2>Generate a</h2>
+            <h3>Random Password</h3>
+            <div class="display">
+                <input type="text" id="password" placeholder="Password">
+                <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" onclick="copyPassword()">
+            </div>
+            <button class="gen-button" onclick="createPassword()"> Generate Password</button>
+            
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/1eec3d9174.js" crossorigin="anonymous"></script>
+<script>
+    const passwordBox = document.getElementById("password");
+    const length = 12;
+    
+
+    const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+    const number = "0123456789";
+    const specialChar = "~!@#$%^&*()_+=-[]\';,./<>?:";
+
+    const allChars = upperCase + lowerCase + number + specialChar ;
+
+    function createPassword() {
+        let passWord = "";
+        while (length > passWord.length){
+            passWord += allChars [ Math.floor(Math.random() * allChars.length)]
+    }
+
+    passwordBox.value=passWord;
+    }
+
+    function copyPassword(){
+        passwordBox.select();
+        document.execCommand("copy");
+
+        alert("Password Has been copied");
+
+    }
+</script>
+</html>
